@@ -96,9 +96,19 @@ public class ExampleMod {
             ITEMS.register("orange_onion",
                     () -> new Item(new Item.Properties()));
 
-    // Aubergine
+    // ✅ Aubergine
     public static final RegistryObject<Item> AUBERGINE =
             ITEMS.register("aubergine", 
+                    () -> new Item(new Item.Properties()));
+
+    // ✅ Rebujito Glass
+    public static final RegistryObject<Item> REBUJITO_GLASS =
+            ITEMS.register("rebujito_glass",
+                    () -> new Item(new Item.Properties()));     
+                    
+    // ✅ Rebujito Glass Void
+    public static final RegistryObject<Item> REBUJITO_GLASS_VOID =
+            ITEMS.register("rebujito_glass_void",
                     () -> new Item(new Item.Properties()));
             
 
@@ -143,9 +153,19 @@ public class ExampleMod {
             event.accept(ORANGE_ONION);
         }
 
-        // añadir aubergine al creativo (TAB GENERAL DE ITEMS)
+        // ✅ añadir aubergine al creativo (TAB GENERAL DE ITEMS)
         if(event.getTab() == CreativeModeTabs.INGREDIENTS){
             event.accept(AUBERGINE);
+        }
+
+        // ✅ añadir aubergine al creativo (TAB GENERAL DE ITEMS)
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS){
+            event.accept(REBUJITO_GLASS);
+        }
+
+        // ✅ añadir aubergine al creativo (TAB GENERAL DE ITEMS)
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS){
+            event.accept(REBUJITO_GLASS_VOID);
         }
     }
 

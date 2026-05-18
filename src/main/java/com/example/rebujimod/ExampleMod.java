@@ -56,6 +56,10 @@ public class ExampleMod {
             ITEMS.register("purple_grape",
                     () -> new Item(new Item.Properties()));
 
+    // ✅ Orange Onion
+    public static final RegistryObject<Item> ORANGE_ONION =
+            ITEMS.register("orange_onion",
+                    () -> new Item(new Item.Properties()));
 
     public ExampleMod(FMLJavaModLoadingContext context) {
 
@@ -91,6 +95,11 @@ public class ExampleMod {
         // ✅ añadir item al creativo (TAB GENERAL DE ITEMS)
         if (event.getTab() == CreativeModeTabs.INGREDIENTS) {
             event.accept(PURPLE_GRAPE);
+        }
+
+        // ✅ añadir orange_onion al creativo (TAB GENERAL DE ITEMS)
+        if (event.getTab() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ORANGE_ONION);
         }
     }
 

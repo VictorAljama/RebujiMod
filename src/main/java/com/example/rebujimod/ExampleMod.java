@@ -110,6 +110,16 @@ public class ExampleMod {
     public static final RegistryObject<Item> REBUJITO_GLASS_VOID =
             ITEMS.register("rebujito_glass_void",
                     () -> new Item(new Item.Properties()));
+
+    // ✅ Rebujito Jug Void
+    public static final RegistryObject<Item> REBUJITO_JUG_VOID =
+            ITEMS.register("rebujito_jug_void",
+                    () -> new Item(new Item.Properties()));
+
+    // ✅ Rebujito Jug
+    public static final RegistryObject<Item> REBUJITO_JUG =
+            ITEMS.register("rebujito_jug",
+                    () -> new Item(new Item.Properties()));
             
 
     public ExampleMod(FMLJavaModLoadingContext context) {
@@ -158,14 +168,24 @@ public class ExampleMod {
             event.accept(AUBERGINE);
         }
 
-        // ✅ añadir aubergine al creativo (TAB GENERAL DE ITEMS)
+        // ✅ añadir rebujito_glass al creativo (TAB GENERAL DE ITEMS)
         if(event.getTab() == CreativeModeTabs.INGREDIENTS){
             event.accept(REBUJITO_GLASS);
         }
 
-        // ✅ añadir aubergine al creativo (TAB GENERAL DE ITEMS)
+        // ✅ añadir rebujito_glass_void al creativo (TAB GENERAL DE ITEMS)
         if(event.getTab() == CreativeModeTabs.INGREDIENTS){
             event.accept(REBUJITO_GLASS_VOID);
+        }
+
+        // ✅ añadir rebujito_jug_void al creativo (TAB GENERAL DE ITEMS)
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS){
+            event.accept(REBUJITO_JUG_VOID);
+        }
+
+        // ✅ añadir rebujito_jug_ al creativo (TAB GENERAL DE ITEMS)
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS){
+            event.accept(REBUJITO_JUG);
         }
     }
 

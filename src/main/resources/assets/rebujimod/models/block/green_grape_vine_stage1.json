@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "cross": "rebujimod:block/green_grape_vine_stage1"
+  }
+}

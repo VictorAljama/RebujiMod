@@ -3,6 +3,7 @@ package com.example.rebujimod;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -61,6 +62,12 @@ public class ExampleMod {
             ITEMS.register("orange_onion",
                     () -> new Item(new Item.Properties()));
 
+    // Aubergine
+    public static final RegistryObject<Item> AUBERGINE =
+            ITEMS.register("aubergine", 
+                    () -> new Item(new Item.Properties()));
+            
+
     public ExampleMod(FMLJavaModLoadingContext context) {
 
         IEventBus modEventBus = context.getModEventBus();
@@ -100,6 +107,11 @@ public class ExampleMod {
         // ✅ añadir orange_onion al creativo (TAB GENERAL DE ITEMS)
         if (event.getTab() == CreativeModeTabs.INGREDIENTS) {
             event.accept(ORANGE_ONION);
+        }
+
+        // añadir aubergine al creativo (TAB GENERAL DE ITEMS)
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS){
+            event.accept(AUBERGINE);
         }
     }
 

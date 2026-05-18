@@ -67,7 +67,7 @@ public class ExampleMod {
 
                                 if (!level.isClientSide) {
                                     level.setBlock(pos.above(),
-                                            GREEN_GRAPE_CROP.get().defaultBlockState(),
+                                            GREEN_GRAPE_VINE.get().defaultBlockState(),
                                             3);
                                     context.getItemInHand().shrink(1);
                                 }
@@ -80,9 +80,9 @@ public class ExampleMod {
                     });
 
     // ✅ Vid uva verde
-    public static final RegistryObject<Block> GREEN_GRAPE_CROP =
-            BLOCKS.register("green_grape_crop",
-                    () -> new GreenGrapeCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
+    public static final RegistryObject<Block> GREEN_GRAPE_VINE =
+            BLOCKS.register("green_grape_vine",
+                    () -> new GreenGrapeVineBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
 
 
     // ✅ Uva morada

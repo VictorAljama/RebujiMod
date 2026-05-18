@@ -115,6 +115,11 @@ public class ExampleMod {
     public static final RegistryObject<Item> REBUJITO_JUG_VOID =
             ITEMS.register("rebujito_jug_void",
                     () -> new Item(new Item.Properties()));
+
+    // ✅ Rebujito Jug
+    public static final RegistryObject<Item> REBUJITO_JUG =
+            ITEMS.register("rebujito_jug",
+                    () -> new Item(new Item.Properties()));
             
 
     public ExampleMod(FMLJavaModLoadingContext context) {
@@ -176,6 +181,11 @@ public class ExampleMod {
         // ✅ añadir rebujito_jug_void al creativo (TAB GENERAL DE ITEMS)
         if(event.getTab() == CreativeModeTabs.INGREDIENTS){
             event.accept(REBUJITO_JUG_VOID);
+        }
+
+        // ✅ añadir rebujito_jug_ al creativo (TAB GENERAL DE ITEMS)
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS){
+            event.accept(REBUJITO_JUG);
         }
     }
 

@@ -3,7 +3,7 @@
   "textures": {
     "0": "rebujimod:block/tronco_vid",
     "1": "rebujimod:block/hojas_vid",
-    "2": "rebujimod:block/uva_verde",
+    "2": "rebujimod:block/uva_morada",
     "particle": "rebujimod:block/tronco_vid"
   },
   "elements": [

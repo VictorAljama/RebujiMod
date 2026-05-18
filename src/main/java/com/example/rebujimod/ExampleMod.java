@@ -80,16 +80,41 @@ public class ExampleMod {
                         }
                     });
 
-    // ✅ Vid uva verde
-    public static final RegistryObject<Block> GREEN_GRAPE_VINE =
-            BLOCKS.register("green_grape_vine",
-                    () -> new GreenGrapeVineBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
-
-
     // ✅ Uva morada
-    public static final RegistryObject<Item> PURPLE_GRAPE =
-            ITEMS.register("purple_grape",
-                    () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PURPLE_GRAPE = ITEMS.register("purple_grape",
+            () -> new Item(new Item.Properties()) {
+
+                @Override
+                public InteractionResult useOn(UseOnContext context) {
+
+                    Level level = context.getLevel();
+                    BlockPos pos = context.getClickedPos();
+                    BlockState state = level.getBlockState(pos);
+
+                    if (state.is(Blocks.GRASS_BLOCK) || state.is(Blocks.DIRT)) {
+
+                        if (!level.isClientSide) {
+                            level.setBlock(pos.above(),
+                                    PURPLE_GRAPE_VINE.get().defaultBlockState(),
+                                    3);
+                            context.getItemInHand().shrink(1);
+                        }
+
+                        return InteractionResult.SUCCESS;
+                    }
+
+                    return InteractionResult.PASS;
+                }
+            });
+
+    // ✅ Vid uva verde
+    public static final RegistryObject<Block> GREEN_GRAPE_VINE = BLOCKS.register("green_grape_vine",
+            () -> new GreenGrapeVineBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
+
+    // ✅ Vid uva morada
+    public static final RegistryObject<Block> PURPLE_GRAPE_VINE = BLOCKS.register("purple_grape_vine",
+            () -> new GreenGrapeVineBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
+
 
     // ✅ Orange Onion
     public static final RegistryObject<Item> ORANGE_ONION =

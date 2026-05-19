@@ -1,20 +1,7 @@
 package com.example.rebujimod;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
@@ -26,10 +13,8 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
+
 
 @Mod(RebujiMod.MODID)
 public class RebujiMod {
@@ -37,114 +22,15 @@ public class RebujiMod {
     public static final String MODID = "rebujimod";
 
     private static final Logger LOGGER = LogUtils.getLogger();
-
-    public static final DeferredRegister<Block> BLOCKS =
-            DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
-
-    public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-
-    public static final RegistryObject<Block> EXAMPLE_BLOCK =
-            BLOCKS.register("example_block",
-                    () -> new Block(BlockBehaviour.Properties.of(Material.STONE)));
-
-    public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM =
-            ITEMS.register("example_block",
-                    () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties()));
-
-    // ✅ Uva verde
-    public static final RegistryObject<Item> GREEN_GRAPE =
-            ITEMS.register("green_grape",
-                    () -> new Item(new Item.Properties()) {
-
-                        @Override
-                        public InteractionResult useOn(UseOnContext context) {
-
-                            Level level = context.getLevel();
-                            BlockPos pos = context.getClickedPos();
-                            BlockState state = level.getBlockState(pos);
-
-                            if (state.is(Blocks.GRASS_BLOCK) || state.is(Blocks.DIRT)) {
-
-                                if (!level.isClientSide) {
-                                    level.setBlock(pos.above(),
-                                            GREEN_GRAPE_VINE.get().defaultBlockState(),
-                                            3);
-                                    context.getItemInHand().shrink(1);
-                                }
-
-                                return InteractionResult.SUCCESS;
-                            }
-
-                            return InteractionResult.PASS;
-                        }
-                    });
-
-    // ✅ Uva morada
-    public static final RegistryObject<Item> PURPLE_GRAPE = ITEMS.register("purple_grape",
-            () -> new Item(new Item.Properties()) {
-
-                @Override
-                public InteractionResult useOn(UseOnContext context) {
-
-                    Level level = context.getLevel();
-                    BlockPos pos = context.getClickedPos();
-                    BlockState state = level.getBlockState(pos);
-
-                    if (state.is(Blocks.GRASS_BLOCK) || state.is(Blocks.DIRT)) {
-
-                        if (!level.isClientSide) {
-                            level.setBlock(pos.above(),
-                                    PURPLE_GRAPE_VINE.get().defaultBlockState(),
-                                    3);
-                            context.getItemInHand().shrink(1);
-                        }
-
-                        return InteractionResult.SUCCESS;
-                    }
-
-                    return InteractionResult.PASS;
-                }
-            });
-
-    // ✅ Vid uva verde
-    public static final RegistryObject<Block> GREEN_GRAPE_VINE = BLOCKS.register("green_grape_vine",
-            () -> new GreenGrapeVineBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
-
-    // ✅ Vid uva morada
-    public static final RegistryObject<Block> PURPLE_GRAPE_VINE = BLOCKS.register("purple_grape_vine",
-            () -> new GreenGrapeVineBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
-
-
-    // ✅ Orange Onion
-    public static final RegistryObject<Item> ORANGE_ONION =
-            ITEMS.register("orange_onion",
-                    () -> new Item(new Item.Properties()));
-
-    // ✅ Aubergine
-    public static final RegistryObject<Item> AUBERGINE =
-            ITEMS.register("aubergine", 
-                    () -> new Item(new Item.Properties()));
-
-    // ✅ Rebujito Glass
-    public static final RegistryObject<Item> REBUJITO_GLASS =
-            ITEMS.register("rebujito_glass",
-                    () -> new Item(new Item.Properties()));     
-                    
-    // ✅ Rebujito Glass Void
-    public static final RegistryObject<Item> REBUJITO_GLASS_VOID =
-            ITEMS.register("rebujito_glass_void",
-                    () -> new Item(new Item.Properties()));
             
-
     public RebujiMod(FMLJavaModLoadingContext context) {
 
         IEventBus modEventBus = context.getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
 
-        BLOCKS.register(modEventBus);
-        ITEMS.register(modEventBus);
+        ModItems.BLOCKS.register(modEventBus);
+        ModItems.ITEMS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -159,38 +45,44 @@ public class RebujiMod {
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
 
-        if (event.getTab() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(EXAMPLE_BLOCK_ITEM);
+        // ✅ añadir item al creativo (TAB GENERAL DE ITEMS)
+        if (event.getTab() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.GREEN_GRAPE);
         }
 
         // ✅ añadir item al creativo (TAB GENERAL DE ITEMS)
         if (event.getTab() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(GREEN_GRAPE);
-        }
-
-        // ✅ añadir item al creativo (TAB GENERAL DE ITEMS)
-        if (event.getTab() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(PURPLE_GRAPE);
+            event.accept(ModItems.PURPLE_GRAPE);
         }
 
         // ✅ añadir orange_onion al creativo (TAB GENERAL DE ITEMS)
         if (event.getTab() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ORANGE_ONION);
+            event.accept(ModItems.ORANGE_ONION);
         }
 
         // ✅ añadir aubergine al creativo (TAB GENERAL DE ITEMS)
         if(event.getTab() == CreativeModeTabs.INGREDIENTS){
-            event.accept(AUBERGINE);
+            event.accept(ModItems.AUBERGINE);
         }
 
-        // ✅ añadir aubergine al creativo (TAB GENERAL DE ITEMS)
+        // ✅ añadir rebujito_glass al creativo (TAB GENERAL DE ITEMS)
         if(event.getTab() == CreativeModeTabs.INGREDIENTS){
-            event.accept(REBUJITO_GLASS);
+            event.accept(ModItems.REBUJITO_GLASS);
         }
 
-        // ✅ añadir aubergine al creativo (TAB GENERAL DE ITEMS)
+        // ✅ añadir rebujito_glass_void al creativo (TAB GENERAL DE ITEMS)
         if(event.getTab() == CreativeModeTabs.INGREDIENTS){
-            event.accept(REBUJITO_GLASS_VOID);
+            event.accept(ModItems.REBUJITO_GLASS_VOID);
+        }
+
+        // ✅ añadir rebujito_jug_void al creativo (TAB GENERAL DE ITEMS)
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.REBUJITO_JUG_VOID);
+        }
+
+        // ✅ añadir rebujito_jug_ al creativo (TAB GENERAL DE ITEMS)
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.REBUJITO_JUG);
         }
     }
 

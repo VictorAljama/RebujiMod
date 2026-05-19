@@ -50,7 +50,7 @@ public class ModItems {
 
         // ✅ Rebujito Glass Void
         public static final RegistryObject<Item> REBUJITO_GLASS_VOID = ITEMS.register("rebujito_glass_void",
-                        () -> new Item(new Item.Properties()));
+                        () -> new RebujitoGlassVoidItem (new Item.Properties()));
 
         // ✅ Rebujito Jug Void
         public static final RegistryObject<Item> REBUJITO_JUG_VOID = ITEMS.register("rebujito_jug_void",

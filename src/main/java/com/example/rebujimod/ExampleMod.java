@@ -109,11 +109,11 @@ public class ExampleMod {
 
     // ✅ Vid uva verde
     public static final RegistryObject<Block> GREEN_GRAPE_VINE = BLOCKS.register("green_grape_vine",
-            () -> new GreenGrapeVineBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
+            () -> new GrapeVineBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).strength(1.3f, 1.3f)));
 
     // ✅ Vid uva morada
     public static final RegistryObject<Block> PURPLE_GRAPE_VINE = BLOCKS.register("purple_grape_vine",
-            () -> new GreenGrapeVineBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
+            () -> new GrapeVineBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).strength(1.3f, 1.3f)));
 
 
     // ✅ Orange Onion

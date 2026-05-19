@@ -31,8 +31,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
-@Mod(ExampleMod.MODID)
-public class ExampleMod {
+@Mod(RebujiMod.MODID)
+public class RebujiMod {
 
     public static final String MODID = "rebujimod";
 
@@ -137,7 +137,7 @@ public class ExampleMod {
                     () -> new Item(new Item.Properties()));
             
 
-    public ExampleMod(FMLJavaModLoadingContext context) {
+    public RebujiMod(FMLJavaModLoadingContext context) {
 
         IEventBus modEventBus = context.getModEventBus();
 

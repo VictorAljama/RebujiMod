@@ -79,7 +79,7 @@ public class GrapeVineBlock extends BushBlock {
             int age = state.getValue(AGE);
             if (age == 3) {
                 if (!level.isClientSide) {
-                    boolean isGreen = state.is(ModItems.GREEN_GRAPE_VINE.get());
+                    boolean isGreen = state.is(ModBlocks.GREEN_GRAPE_VINE.get());
                     ItemStack drop = new ItemStack(isGreen ? ModItems.GREEN_GRAPE.get() : ModItems.PURPLE_GRAPE.get(), 2);
                     Block.popResource(level, pos, drop);
                     level.setBlock(pos, state.setValue(AGE, 0), 2);

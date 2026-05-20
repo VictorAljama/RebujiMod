@@ -26,16 +26,6 @@ public class ModItems {
         public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS,
                         RebujiMod.MODID);
 
-        public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, RebujiMod.MODID);
-
-        // ✅ Vid uva verde
-        public static final RegistryObject<Block> GREEN_GRAPE_VINE = BLOCKS.register("green_grape_vine",
-                        () -> new GrapeVineBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).strength(1.3f, 1.3f)));
-
-        // ✅ Vid uva morada
-        public static final RegistryObject<Block> PURPLE_GRAPE_VINE = BLOCKS.register("purple_grape_vine",
-                        () -> new GrapeVineBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).strength(1.3f, 1.3f)));
-
         // ✅ Orange Onion
         public static final RegistryObject<Item> ORANGE_ONION = ITEMS.register("orange_onion",
                         () -> new Item(new Item.Properties()));
@@ -78,7 +68,7 @@ public class ModItems {
 
                                 if (!level.isClientSide) {
                                     level.setBlock(pos.above(),
-                                            GREEN_GRAPE_VINE.get().defaultBlockState(),
+                                            ModBlocks.GREEN_GRAPE_VINE.get().defaultBlockState(),
                                             3);
                                     context.getItemInHand().shrink(1);
                                 }
@@ -105,7 +95,7 @@ public class ModItems {
 
                         if (!level.isClientSide) {
                             level.setBlock(pos.above(),
-                                    PURPLE_GRAPE_VINE.get().defaultBlockState(),
+                                    ModBlocks.PURPLE_GRAPE_VINE.get().defaultBlockState(),
                                     3);
                             context.getItemInHand().shrink(1);
                         }

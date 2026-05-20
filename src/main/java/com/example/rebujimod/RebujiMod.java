@@ -29,7 +29,7 @@ public class RebujiMod {
 
         modEventBus.addListener(this::commonSetup);
 
-        ModItems.BLOCKS.register(modEventBus);
+        ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);

@@ -5,11 +5,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
-public class RebujiJugBlock extends BushBlock{
+public class RebujitoJugBlock extends BushBlock{
 
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 3);
     
-    public RebujiJugBlock(Properties properties) {
+    public RebujitoJugBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
     }

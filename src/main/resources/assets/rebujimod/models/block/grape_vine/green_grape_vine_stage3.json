@@ -1,10 +1,10 @@
 {
   "parent": "minecraft:block/block",
   "textures": {
-    "0": "rebujimod:block/tronco_vid",
-    "1": "rebujimod:block/hojas_vid",
-    "2": "rebujimod:block/uva_verde",
-    "particle": "rebujimod:block/tronco_vid"
+    "0": "rebujimod:block/grape_vine/tronco_vid",
+    "1": "rebujimod:block/grape_vine/hojas_vid",
+    "2": "rebujimod:block/grape_vine/uva_verde",
+    "particle": "rebujimod:block/grape_vine/tronco_vid"
   },
   "elements": [
 		{

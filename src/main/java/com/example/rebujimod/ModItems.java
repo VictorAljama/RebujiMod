@@ -46,7 +46,7 @@ public class ModItems {
 
         // ✅ Rebujito Glass
         public static final RegistryObject<Item> REBUJITO_GLASS = ITEMS.register("rebujito_glass",
-                        () -> new RebujitoGlass(new Item.Properties().stacksTo(1)));
+                        () -> new RebujitoGlass(new Item.Properties().stacksTo(5)));
 
         // ✅ Rebujito Glass Void
         public static final RegistryObject<Item> REBUJITO_GLASS_VOID = ITEMS.register("rebujito_glass_void",
@@ -59,6 +59,10 @@ public class ModItems {
         // ✅ Rebujito Jug
         public static final RegistryObject<Item> REBUJITO_JUG = ITEMS.register("rebujito_jug",
                         () -> new Item(new Item.Properties()));
+
+        // ✅ Bloque jarra
+        public static final RegistryObject<Block> REBUJITO_JUG_BLOCK = BLOCKS.register("rebujito_jug_block",
+                        () -> new RebujiJugBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).strength(1.3f, 1.3f)));
 
          // ✅ Uva verde
     public static final RegistryObject<Item> GREEN_GRAPE =

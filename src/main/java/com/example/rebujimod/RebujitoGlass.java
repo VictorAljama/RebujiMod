@@ -53,12 +53,12 @@ public class RebujitoGlass extends Item {
 
                 player.addEffect(new MobEffectInstance(
                         MobEffects.CONFUSION,
-                        200,
+                        1200,
                         0));
 
                 player.addEffect(new MobEffectInstance(
                         MobEffects.MOVEMENT_SPEED,
-                        400,
+                        1200,
                         1));
             }
 

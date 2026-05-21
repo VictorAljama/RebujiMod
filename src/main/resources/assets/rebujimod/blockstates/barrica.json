@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "llenado=0": { "model": "rebujimod:block/barril/barril" },
+    "llenado=1": { "model": "rebujimod:block/barril/barril_1" },
+    "llenado=2": { "model": "rebujimod:block/barril/barril_2" },
+    "llenado=3": { "model": "rebujimod:block/barril/barril_3" },
+    "llenado=4": { "model": "rebujimod:block/barril/barril_4" }
+  }
+}

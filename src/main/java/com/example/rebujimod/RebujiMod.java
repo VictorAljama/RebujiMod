@@ -22,7 +22,7 @@ public class RebujiMod {
     public static final String MODID = "rebujimod";
 
     private static final Logger LOGGER = LogUtils.getLogger();
-            
+
     public RebujiMod(FMLJavaModLoadingContext context) {
 
         IEventBus modEventBus = context.getModEventBus();
@@ -31,6 +31,7 @@ public class RebujiMod {
 
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
+        ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -83,6 +84,11 @@ public class RebujiMod {
         // ✅ añadir rebujito_jug_ al creativo (TAB GENERAL DE ITEMS)
         if(event.getTab() == CreativeModeTabs.INGREDIENTS){
             event.accept(ModItems.REBUJITO_JUG);
+        }
+
+        // ✅ añadir barrica al creativo (TAB GENERAL DE ITEMS)
+        if(event.getTab() == CreativeModeTabs.BUILDING_BLOCKS){
+            event.accept(ModItems.BARRICA);
         }
     }
 

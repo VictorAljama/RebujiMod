@@ -31,7 +31,7 @@ public class ModItems {
 
         // ✅ Rebujito Glass Void
         public static final RegistryObject<Item> REBUJITO_GLASS_VOID = ITEMS.register("rebujito_glass_void",
-                        () -> new RebujitoGlassVoidItem (new Item.Properties()));
+                        () -> new RebujitoGlassVoidItem(new Item.Properties()));
 
         // ✅ Rebujito Jug Void
         public static final RegistryObject<Item> REBUJITO_JUG_VOID = ITEMS.register("rebujito_jug_void",
@@ -41,18 +41,16 @@ public class ModItems {
         public static final RegistryObject<Item> REBUJITO_JUG = ITEMS.register("rebujito_jug",
                         () -> new Item(new Item.Properties()));
 
+        // ✅ Uva verde
+        public static final RegistryObject<Item> GREEN_GRAPE = ITEMS.register("green_grape",
+                        () -> new GreenGrapeItem(new Item.Properties()));
 
+        // ✅ Uva morada
+        public static final RegistryObject<Item> PURPLE_GRAPE = ITEMS.register("purple_grape",
+                        () -> new PurpleGrapeItem(new Item.Properties()));
 
-         // ✅ Uva verde
-    public static final RegistryObject<Item> GREEN_GRAPE = ITEMS.register("green_grape",
-            () -> new GreenGrapeItem(new Item.Properties()));
-
-    // ✅ Uva morada
-    public static final RegistryObject<Item> PURPLE_GRAPE = ITEMS.register("purple_grape",
-            () -> new PurpleGrapeItem(new Item.Properties()));
-
-    // ✅ Barrica (item stackeable por defecto y coloca bloque al usarlo)
-    public static final RegistryObject<Item> BARRICA = ITEMS.register("barrica",
-            () -> new BlockItem(ModBlocks.BARRICA.get(), new Item.Properties().stacksTo(64)));
+        // ✅ Barrica (item stackeable por defecto y coloca bloque al usarlo)
+        public static final RegistryObject<Item> BARRICA = ITEMS.register("barrica",
+                        () -> new BlockItem(ModBlocks.BARRICA.get(), new Item.Properties().stacksTo(64)));
 
 }

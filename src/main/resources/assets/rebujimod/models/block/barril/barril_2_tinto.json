@@ -7,7 +7,7 @@
 		"0": "rebujimod:block/barril/base_barril",
 		"1": "rebujimod:block/barril/barril",
 		"2": "rebujimod:block/barril/anillas",
-		"3": "rebujimod:block/barril/vino_blanco",
+		"3": "rebujimod:block/barril/vino_tinto",
 		"particle": "rebujimod:block/barril/base_barril"
 	},
 	"elements": [

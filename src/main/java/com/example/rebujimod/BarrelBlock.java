@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -23,15 +24,16 @@ import org.jetbrains.annotations.Nullable;
 public class BarrelBlock extends Block implements EntityBlock {
 
     public static final IntegerProperty LLENADO = IntegerProperty.create("llenado", 0, 4);
+    public static final BooleanProperty TINTO = BooleanProperty.create("tinto");
 
     public BarrelBlock(BlockBehaviour.Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(LLENADO, 0));
+        this.registerDefaultState(this.stateDefinition.any().setValue(LLENADO, 0).setValue(TINTO, false));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(LLENADO);
+        builder.add(LLENADO, TINTO);
     }
 
     @Override
@@ -39,36 +41,39 @@ public class BarrelBlock extends Block implements EntityBlock {
             BlockHitResult hit) {
         ItemStack itemInHand = player.getItemInHand(hand);
         int currentLlenado = state.getValue(LLENADO);
+        boolean isGreenGrape = itemInHand.is(ModItems.GREEN_GRAPE.get());
+        boolean isPurpleGrape = itemInHand.is(ModItems.PURPLE_GRAPE.get());
 
-        // Solo permitir interacción si el barril no está completamente lleno (llenado < 4)
-        if (itemInHand.is(ModItems.GREEN_GRAPE.get()) && currentLlenado < 4) {
+        if ((isGreenGrape || isPurpleGrape) && currentLlenado < 4) {
+            boolean currentTinto = state.getValue(TINTO);
+            boolean requestedTinto = isPurpleGrape;
+
+            // No mezclar tipos de vino una vez que el barril ya tiene contenido.
+            if (currentLlenado > 0 && currentTinto != requestedTinto) {
+                return InteractionResult.PASS;
+            }
+
             if (!level.isClientSide) {
-                // Obtener el BlockEntity
                 BlockEntity blockEntity = level.getBlockEntity(pos);
                 if (blockEntity instanceof BarrelBlockEntity) {
                     BarrelBlockEntity barrelEntity = (BarrelBlockEntity) blockEntity;
 
-                    // Incrementar el contador de interacciones
                     barrelEntity.incrementInteractionCount();
-
-                    // Restar 1 del item del inventario
                     itemInHand.shrink(1);
 
-                    // Si alcanzamos 5 interacciones, incrementar llenado y resetear contador
                     if (barrelEntity.getInteractionCount() >= 5) {
                         int newLlenado = currentLlenado + 1;
-                        level.setBlock(pos, state.setValue(LLENADO, newLlenado), 3);
+                        boolean newTinto = currentLlenado == 0 ? requestedTinto : currentTinto;
+                        level.setBlock(pos, state.setValue(LLENADO, newLlenado).setValue(TINTO, newTinto), 3);
                         barrelEntity.resetInteractionCount();
                     }
 
-                    // Marcar el BlockEntity como modificado
                     barrelEntity.setChanged();
                 }
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        // Si el barril está lleno (llenado == 4), no hacer nada
         if (currentLlenado == 4) {
             return InteractionResult.PASS;
         }
@@ -90,6 +95,14 @@ public class BarrelBlock extends Block implements EntityBlock {
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(LLENADO, 0);
+        return this.defaultBlockState().setValue(LLENADO, 0).setValue(TINTO, false);
+    }
+
+    @Override
+    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state,
+            net.minecraft.world.level.block.entity.BlockEntity blockEntity, ItemStack tool) {
+        super.playerDestroy(level, player, pos, state, blockEntity, tool);
+
+        Block.popResource(level, pos, new ItemStack(ModItems.BARRICA.get(), 1));
     }
 }

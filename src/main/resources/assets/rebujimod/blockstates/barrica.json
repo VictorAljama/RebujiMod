@@ -1,9 +1,14 @@
 {
   "variants": {
-    "llenado=0": { "model": "rebujimod:block/barril/barril" },
-    "llenado=1": { "model": "rebujimod:block/barril/barril_1" },
-    "llenado=2": { "model": "rebujimod:block/barril/barril_2" },
-    "llenado=3": { "model": "rebujimod:block/barril/barril_3" },
-    "llenado=4": { "model": "rebujimod:block/barril/barril_4" }
+    "llenado=0,tinto=false": { "model": "rebujimod:block/barril/barril" },
+    "llenado=0,tinto=true": { "model": "rebujimod:block/barril/barril" },
+    "llenado=1,tinto=false": { "model": "rebujimod:block/barril/barril_1" },
+    "llenado=1,tinto=true": { "model": "rebujimod:block/barril/barril_1_tinto" },
+    "llenado=2,tinto=false": { "model": "rebujimod:block/barril/barril_2" },
+    "llenado=2,tinto=true": { "model": "rebujimod:block/barril/barril_2_tinto" },
+    "llenado=3,tinto=false": { "model": "rebujimod:block/barril/barril_3" },
+    "llenado=3,tinto=true": { "model": "rebujimod:block/barril/barril_3_tinto" },
+    "llenado=4,tinto=false": { "model": "rebujimod:block/barril/barril_4" },
+    "llenado=4,tinto=true": { "model": "rebujimod:block/barril/barril_4_tinto" }
   }
 }

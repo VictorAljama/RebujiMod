@@ -24,5 +24,5 @@ public class ModBlocks {
 
    // ✅ Barrica
    public static final RegistryObject<Block> BARRICA = BLOCKS.register("barrica",
-         () -> new BarrelBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).strength(1.3f, 1.3f)));
+         () -> new BarrelBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).strength(2f, 1.2f)));
 }

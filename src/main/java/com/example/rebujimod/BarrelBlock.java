@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -68,6 +69,35 @@ public class BarrelBlock extends Block implements EntityBlock {
                         barrelEntity.resetInteractionCount();
                     }
 
+                    barrelEntity.setChanged();
+                }
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+        boolean isEmptyBottle = itemInHand.is(ModItems.BOTELLA_VINO_VACIA.get());
+        if (isEmptyBottle && currentLlenado > 0) {
+            if (!level.isClientSide) {
+                Item filledBottleItem = state.getValue(TINTO) ? ModItems.BOTELLA_VINO_TINTO.get()
+                                : ModItems.BOTELLA_VINO_BLANCO.get();
+                ItemStack filledBottle = new ItemStack(filledBottleItem);
+
+                if (!player.getAbilities().instabuild) {
+                    itemInHand.shrink(1);
+                }
+
+                if (!player.getInventory().add(filledBottle)) {
+                    Block.popResource(level, pos, filledBottle);
+                }
+
+                int newLlenado = currentLlenado - 1;
+                boolean newTinto = newLlenado > 0 ? state.getValue(TINTO) : false;
+                level.setBlock(pos, state.setValue(LLENADO, newLlenado).setValue(TINTO, newTinto), 3);
+
+                BlockEntity blockEntity = level.getBlockEntity(pos);
+                if (blockEntity instanceof BarrelBlockEntity) {
+                    BarrelBlockEntity barrelEntity = (BarrelBlockEntity) blockEntity;
+                    barrelEntity.resetInteractionCount();
                     barrelEntity.setChanged();
                 }
             }

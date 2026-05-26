@@ -76,6 +76,21 @@ public class RebujiMod {
             event.accept(ModItems.REBUJITO_GLASS_VOID);
         }
 
+        // ✅ añadir botella de vino vacía al creativo (TAB GENERAL DE ITEMS)
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.BOTELLA_VINO_VACIA);
+        }
+
+        // ✅ añadir botella de vino tinto al creativo (TAB GENERAL DE ITEMS)
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.BOTELLA_VINO_TINTO);
+        }
+
+        // ✅ añadir botella de vino blanco al creativo (TAB GENERAL DE ITEMS)
+        if(event.getTab() == CreativeModeTabs.INGREDIENTS){
+            event.accept(ModItems.BOTELLA_VINO_BLANCO);
+        }
+
         // ✅ añadir rebujito_jug_void al creativo (TAB GENERAL DE ITEMS)
         if(event.getTab() == CreativeModeTabs.INGREDIENTS){
             event.accept(ModItems.REBUJITO_JUG_VOID);

@@ -27,6 +27,18 @@ public class ModItems {
         public static final RegistryObject<Item> REBUJITO_GLASS_VOID = ITEMS.register("rebujito_glass_void",
                         () -> new RebujitoGlassVoidItem(new Item.Properties()));
 
+        // ✅ Botella de vino vacía
+        public static final RegistryObject<Item> BOTELLA_VINO_VACIA = ITEMS.register("botella_vino_vacia",
+                        () -> new BotellaVinoVaciaItem(new Item.Properties().stacksTo(64)));
+
+        // ✅ Botella de vino tinto
+        public static final RegistryObject<Item> BOTELLA_VINO_TINTO = ITEMS.register("botella_vino_tinto",
+                        () -> new BotellaVinoTintoItem(new Item.Properties().stacksTo(16)));
+
+        // ✅ Botella de vino blanco
+        public static final RegistryObject<Item> BOTELLA_VINO_BLANCO = ITEMS.register("botella_vino_blanco",
+                        () -> new BotellaVinoBlancoItem(new Item.Properties().stacksTo(16)));
+
         // ✅ Rebujito Jug Void
         public static final RegistryObject<Item> REBUJITO_JUG_VOID = ITEMS.register("rebujito_jug_void",
                         () -> new Item(new Item.Properties()));

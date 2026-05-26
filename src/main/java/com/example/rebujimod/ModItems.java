@@ -1,13 +1,7 @@
 package com.example.rebujimod;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.item.BlockItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -43,11 +37,11 @@ public class ModItems {
 
         // ✅ Uva verde
         public static final RegistryObject<Item> GREEN_GRAPE = ITEMS.register("green_grape",
-                        () -> new GreenGrapeItem(new Item.Properties()));
+                        GreenGrape::new);
 
         // ✅ Uva morada
         public static final RegistryObject<Item> PURPLE_GRAPE = ITEMS.register("purple_grape",
-                        () -> new PurpleGrapeItem(new Item.Properties()));
+                        PurpleGrape::new);
 
         // ✅ Barrica (item stackeable por defecto y coloca bloque al usarlo)
         public static final RegistryObject<Item> BARRICA = ITEMS.register("barrica",

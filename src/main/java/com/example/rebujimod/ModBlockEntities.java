@@ -13,4 +13,8 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<BarrelBlockEntity>> BARREL_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("barrel_block_entity",
                     () -> BlockEntityType.Builder.of(BarrelBlockEntity::new, ModBlocks.BARRICA.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<BottleRackBlockEntity>> BOTTLE_RACK_BLOCK_ENTITY =
+            BLOCK_ENTITIES.register("bottle_rack_block_entity",
+                    () -> BlockEntityType.Builder.of(BottleRackBlockEntity::new, ModBlocks.BOTELLERO.get()).build(null));
 }

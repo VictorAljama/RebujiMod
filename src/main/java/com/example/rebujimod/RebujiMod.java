@@ -105,6 +105,11 @@ public class RebujiMod {
         if(event.getTab() == CreativeModeTabs.BUILDING_BLOCKS){
             event.accept(ModItems.BARRICA);
         }
+
+            // ✅ añadir botellero al creativo (TAB BLOQUES DE CONSTRUCCIÓN)
+            if(event.getTab() == CreativeModeTabs.BUILDING_BLOCKS){
+                event.accept(ModItems.BOTELLERO);
+            }
     }
 
     @SubscribeEvent
@@ -117,6 +122,10 @@ public class RebujiMod {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             LOGGER.info("HELLO FROM CLIENT SETUP");
+            // Registrar renderer del botellero
+            net.minecraft.client.renderer.blockentity.BlockEntityRenderers.register(
+                    com.example.rebujimod.ModBlockEntities.BOTTLE_RACK_BLOCK_ENTITY.get(),
+                    com.example.rebujimod.client.BottleRackRenderer::new);
         }
     }
 }

@@ -11,5 +11,7 @@
   "item.rebujimod.rebujito_jug_void": "Rebujito's jug void",
   "item.rebujimod.rebujito_jug": "Rebujito's jug",
   "item.rebujimod.barrica": "Barrel",
-  "block.rebujimod.barrica": "Barrel"
+  "block.rebujimod.barrica": "Barrel",
+  "item.rebujimod.botellero": "Bottle Rack",
+  "block.rebujimod.botellero": "Bottle Rack"
 }

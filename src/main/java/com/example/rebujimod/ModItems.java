@@ -59,4 +59,8 @@ public class ModItems {
         public static final RegistryObject<Item> BARRICA = ITEMS.register("barrica",
                         () -> new BlockItem(ModBlocks.BARRICA.get(), new Item.Properties().stacksTo(64)));
 
+        // ✅ Botellero (item stackeable y coloca bloque al usarlo)
+        public static final RegistryObject<Item> BOTELLERO = ITEMS.register("botellero",
+                        () -> new BlockItem(ModBlocks.BOTELLERO.get(), new Item.Properties().stacksTo(64)));
+
 }

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "rebujimod:block/wine_rack/botellero" },
+    "facing=south": { "model": "rebujimod:block/wine_rack/botellero", "y": 180 },
+    "facing=west":  { "model": "rebujimod:block/wine_rack/botellero", "y": 270 },
+    "facing=east":  { "model": "rebujimod:block/wine_rack/botellero", "y": 90 }
+  }
+}

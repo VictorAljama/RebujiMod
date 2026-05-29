@@ -102,8 +102,13 @@ public class RebujiMod {
         }
 
         // ✅ añadir barrica al creativo (TAB GENERAL DE ITEMS)
-        if(event.getTab() == CreativeModeTabs.BUILDING_BLOCKS){
+        if (event.getTab() == CreativeModeTabs.BUILDING_BLOCKS) {
             event.accept(ModItems.BARRICA);
+        }
+
+        // ✅ añadir resina sin procesar al creativo (TAB GENERAL DE ITEMS)
+        if (event.getTab() == CreativeModeTabs.INGREDIENTS) {
+            event.accept(ModItems.RAW_RESIN);
         }
     }
 

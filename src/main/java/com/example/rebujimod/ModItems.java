@@ -59,4 +59,12 @@ public class ModItems {
         public static final RegistryObject<Item> BARRICA = ITEMS.register("barrica",
                         () -> new BlockItem(ModBlocks.BARRICA.get(), new Item.Properties().stacksTo(64)));
 
+        // ✅ Tronco de abedul de resina (item stackeable por defecto y coloca bloque al usarlo)
+        public static final RegistryObject<Item> RESIN_BIRCH_LOG = ITEMS.register("resin_birch_log",
+                        () -> new BlockItem(ModBlocks.RESIN_BIRCH_LOG.get(), new Item.Properties()));
+
+        // ✅ Resina sin procesar
+        public static final RegistryObject<Item> RAW_RESIN = ITEMS.register("raw_resin",
+                        () -> new Item(new Item.Properties()));
+
 }

@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/cube_column",
+    "textures": {
+        "end": "rebujimod:block/resin_birch/resin_birch_log_top",
+        "side": "rebujimod:block/resin_birch/resin_birch_log"
+    }
+}

@@ -11,5 +11,8 @@
   "item.rebujimod.rebujito_jug_void": "Jarra Rebujito Vacio",
   "item.rebujimod.rebujito_jug": "Jarra Rebujito",
   "item.rebujimod.barrica": "Barrica",
-  "block.rebujimod.barrica": "Barrica"
+  "block.rebujimod.barrica": "Barrica",
+  "item.rebujimod.resin_birch_log": "Tronco de abedul con resina",
+  "block.rebujimod.resin_birch_log": "Tronco de abedul con resina",
+  "item.rebujimod.raw_resin": "Resina cruda"
 }

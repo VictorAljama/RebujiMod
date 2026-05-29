@@ -11,5 +11,8 @@
   "item.rebujimod.rebujito_jug_void": "Rebujito's jug void",
   "item.rebujimod.rebujito_jug": "Rebujito's jug",
   "item.rebujimod.barrica": "Barrel",
-  "block.rebujimod.barrica": "Barrel"
+  "block.rebujimod.barrica": "Barrel",
+  "item.rebujimod.resin_birch_log": "Resin Birch Log",
+  "block.rebujimod.resin_birch_log": "Resin Birch Log",
+  "item.rebujimod.raw_resin": "Raw Resin"
 }
